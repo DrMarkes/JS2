@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coffee Machine</title>
+</head>
+<body>
+
+<script>
+    // ДЗ
+    // добавить зерна
+    // проверку на пустую кофеварку
+    // реализовать метод стоп для кофеварки
+
+    function CoffeeMachine(power) {
+        var waterAmount = 0;
+        var maxTemp = 90;
+        var waterHeatCapacity = 4200;
+        var coffeeAmount = 0;
+        var launchTime;
+
+        this.addWater = function (newAmount) {
+            if (newAmount >= 50) {
+                waterAmount += newAmount;
+            } else {
+                console.error('Слишком мало воды!');
+            }
+        };
+
+        this.addCoffee = function(coffee) {
+            coffeeAmount += homework1;
+            if (coffeeAmount < 20) {
+                var minAdd = 20 - coffeeAmount;
+                console.log(`Мало кофе, добавьте еще минимум ${minAdd}`);
+            }
+        };
+
+        var calcBoilTime = function () {
+            return (waterAmount * waterHeatCapacity * maxTemp) / power;
+        };
+
+        this.getBoilTime = function () {
+            return calcBoilTime();
+        };
+
+        this.launch = function () {
+            if (coffeeAmount < 20) {
+                console.log('Кофеварка пуста, добавьте кофе!');
+            } else {
+
+                launchTime = setTimeout(function () {
+                    console.log('Кофе готов!')
+                }, calcBoilTime());
+            }
+        };
+
+        this.stop = function () {
+            clearTimeout(launchTime);
+            console.log('Процесс приготовления по вашей команде остановлен!');
+        }
+    }
+
+    var vitek = new CoffeeMachine(3500);
+    vitek.addWater(50);
+    vitek.addCoffee(20);
+    vitek.launch();
+    vitek.stop();
+</script>
+</body>
+</html>
